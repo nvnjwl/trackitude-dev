@@ -7,7 +7,12 @@ var CAR_LIST = [
         image: 'images/car1.jpg',
         description: 'This is Car used for Transportation',
         lat: 28.5355,
-        lng: 78.3910
+        lng: 78.3910,
+        runningKM: '256 KM',
+        IdleTime: '3.5 Hours',
+        runningTime: '5.5 Hours',
+        averageSpeed: '67 KMPH',
+        maxSpeed: '90 KMPH',
     },
     {
         id: 2,
@@ -17,7 +22,12 @@ var CAR_LIST = [
         image: 'images/car2.jpg',
         description: 'This is Car used for Transportation',
         lat: 27.5355,
-        lng: 77.3910
+        lng: 77.3910,
+        runningKM: '356 KM',
+        IdleTime: '3.5 Hours',
+        runningTime: '5.5 Hours',
+        averageSpeed: '67 KMPH',
+        maxSpeed: '90 KMPH',
     },
     {
         id: 3,
@@ -27,17 +37,27 @@ var CAR_LIST = [
         image: 'images/car3.jpg',
         description: 'This is Car used for Pick up and Drop',
         lat: 28.5355,
-        lng: 77.6910
-    },
+        lng: 77.6910,
+        runningKM: '286 KM',
+        IdleTime: '4.5 Hours',
+        runningTime: '5.5 Hours',
+        averageSpeed: '67 KMPH',
+        maxSpeed: '90 KMPH',
+},
      {
         id: 4,
         name: 'Maruti :DL36AL-6793',
         driver: 'Sumit Arora',
         country: 'India/ Ghaziaabad',
         image: 'images/car4.jpg',
-         description: 'This is Car used for service',
+        description: 'This is Car used for service',
         lat: 26.5355,
-        lng: 76.3910
+        lng: 76.3910,
+        runningKM: '106 KM',
+        IdleTime: '4.5 Hours',
+        runningTime: '2.5 Hours',
+        averageSpeed: '67 KMPH',
+        maxSpeed: '90 KMPH',
     },
       {
         id: 5,
@@ -47,6 +67,11 @@ var CAR_LIST = [
         image: 'images/car5.jpg',
         description: 'This is Car used for Pick up and Drop',
         lat: 29.5355,
-        lng: 79.3910
+        lng: 79.3910,
+        runningKM: '206 KM',
+        IdleTime: '4.5 Hours',
+        runningTime: '4.5 Hours',
+        averageSpeed: '60 KMPH',
+        maxSpeed: '90 KMPH',
     },
 ];

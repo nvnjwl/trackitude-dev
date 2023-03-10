@@ -44,7 +44,8 @@ function renderAllCars(cars) {
         let car = CAR_LIST.find(function (car) {
             return car.id == carId;
         });
-        mapManager.renderThisMap('mainMenu2', car.lat, car.lng);
+        let carDetails = car;
+        mapManager.renderThisMap('mainMenu2', car.lat, car.lng,carDetails);
 
         let submenuId = 'subMenu2';
         let subMenuDiv = document.querySelector(`#${submenuId}`);

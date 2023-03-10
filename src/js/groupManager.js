@@ -66,6 +66,7 @@ function GroupManager() {
                             <td>${group.groupMembers.map(function (groupMember) {
                 return `
                                     <div class="groupMember">
+                                        <div class="groupMemberId">${groupMember.carId}</div>
                                         <div class="groupMemberName">${groupMember.carName}</div>
                                         <div class="groupMemberDriver">${groupMember.driver}</div>
                                     </div>

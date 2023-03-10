@@ -18,6 +18,8 @@ function UIManager() {
         carManager = new CarManager();
         reportManager = new ReportManager();
         groupManager = new GroupManager();
+        mapManager.renderSpeedMenu();
+
 
         
         if (MAPS_READY) {

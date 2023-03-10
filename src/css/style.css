@@ -231,4 +231,37 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+.mapDiv{
+    height: 100%;
+    width: 100%;
+}
 
+.speedMenu{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    bottom: 0px;
+}
+
+
+.speedMenuBodyItemTitle{
+    width: 20px;
+    height: 20px;
+    background-color: #7dbdab;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    flex-direction: row;
+}
