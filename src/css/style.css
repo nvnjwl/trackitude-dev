@@ -21,6 +21,33 @@ body{
 }
 
 
+#topPanel{
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #8d2525;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+#bottomPanel{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #7fb578;
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+    bottom: 0px;
+}
+
 #leftPanel{
     width: 10%;
     height: 100%;
@@ -29,7 +56,8 @@ body{
     align-items: center;
     justify-content: center;
     position: absolute;
-    left:0px
+    left:0px;
+    border:1px solid grey;
 }
 
 
@@ -78,20 +106,28 @@ body{
 .hidden{
     display: none;
 }
+.carParent{
+    overflow-y: scroll;
+    height:calc(100% - 50px);
 
+}
 .car{
    position: relative;
     float: left;
     display: block;
     left: 0px;
-    max-width: 200px;
-    max-height: 200px;
-    margin: 5px;
-    padding: 5px;
+    min-width: 100px;
+    min-height: 200px;
+    max-width: 500px;
+    max-height: 300px;
+    margin: 10px;
+    padding: 10px;
     overflow: hidden;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #ccc;
+    border: 2px solid #cFc;
 }
 
 .car > .car-image{
@@ -146,3 +182,53 @@ body{
     justify-content: center;
     background-color: #ccc;
 }
+
+
+
+.reportParent{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.report{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+
+//table
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: #ef9898}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+

@@ -1,17 +1,17 @@
 function MapManager() {
 
 
-    function renderThisMap(mapId, lat, lng, zoom = 5) {
+    function renderThisMap(mapId, lat, lng, zoom = 9) {
         let center = new google.maps.LatLng(lat, lng);
         var mapProp = {
             center: center,
-            zoom: 5,
+            zoom: 9,
         };
         var map = new google.maps.Map(document.getElementById(mapId), mapProp);
         var marker = new google.maps.Marker({
             position: center,
             animation: google.maps.Animation.BOUNCE,
-            icon: 'car.png'
+            icon: 'images/car.png'
         });
 
         marker.setMap(map);
@@ -20,14 +20,14 @@ function MapManager() {
 
     function renderHistory() {
 
-        var stavanger = new google.maps.LatLng(58.970, 5.733);
-        var amsterdam = new google.maps.LatLng(52.370, 4.890);
-        var london = new google.maps.LatLng(51.508, -0.120);
+        var Noida = new google.maps.LatLng(28.5355, 77.3910);
+        var Delhi = new google.maps.LatLng(28.7041, 77.1025);
+        var Ghaziabad = new google.maps.LatLng(28.6667, 77.4333);
         let mapId = 'mainMenu3';
-        let center = new google.maps.LatLng(51.508742, -0.120850);
+        let center = new google.maps.LatLng(28.5355, 77.3910);
         var mapProp = {
             center: center,
-            zoom: 5,
+            zoom: 9,
         };
 
 
@@ -38,7 +38,7 @@ function MapManager() {
         var map = new google.maps.Map(document.getElementById(mapId), mapProp);
 
 
-        var myTrip = [stavanger, amsterdam, london, stavanger];
+        var myTrip = [Noida, Delhi, Ghaziabad, Noida];
         var flightPath = new google.maps.Polygon({
             path: myTrip,
             strokeColor: "#0000FF",
@@ -55,7 +55,7 @@ function MapManager() {
         var marker = new google.maps.Marker({
             position: center,
             //animation: google.maps.Animation.BOUNCE
-            icon: 'car.png'
+            icon: 'images/car.png'
         });
 
         marker.setMap(map);
@@ -74,8 +74,11 @@ function MapManager() {
             var latLng = marker.getPosition(); // returns LatLng object
             var lat = latLng.lat(); // returns latitude
             var lng = latLng.lng(); // returns longitude
-            lat += 0.1;
-            lng += 0.1;
+            //random movenent of 10 meters
+            let movementX = Math.random() * 0.001;
+            let movementY = Math.random() * 0.001;
+            lat += movementX;
+            lng += movementY;
             let newPos = new google.maps.LatLng(lat, lng);
             marker.setPosition(newPos);
         }

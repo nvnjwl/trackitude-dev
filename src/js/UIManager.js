@@ -2,9 +2,11 @@ function UIManager() {
 
     let allSubmenu;
     let allMainmenu;
-    function initialize() {
 
-       
+    let carManager;
+    let reportManager;
+    let groupManager ;
+    function initialize() {     
 
 
         allSubmenu = document.querySelectorAll('.subMenu');
@@ -13,12 +15,16 @@ function UIManager() {
             submenu.setAttribute('data-submenu-id', submenu.id);
             submenu.addEventListener('click', onSubmenuClick);
         });
-        renderAllCars(CAR_LIST);
+        carManager = new CarManager();
+        reportManager = new ReportManager();
+        groupManager = new GroupManager();
+        carManager.renderAllCars(CAR_LIST);
         if (MAPS_READY) {
-            mapManager.renderThisMap('mainMenu2', 51.508742, -0.120850);
+            let noida= {lat: 28.5355, lng: 77.3910};
+            mapManager.renderThisMap('mainMenu2', noida.lat, noida.lng);
         } else {
             document.addEventListener('mapsReady', function () {
-                mapManager.renderThisMap('mainMenu2', 51.508742, -0.120850);
+                mapManager.renderThisMap('mainMenu2', noida.lat, noida.lng);
             });
         }
     }
@@ -39,6 +45,13 @@ function UIManager() {
         if (submenuId === 'subMenu3') {
                mapManager.renderHistory();
         }
+        if (submenuId ==="subMenu1") {
+                reportManager.renderReports();
+        }
+        if (submenuId ==="subMenu5") {
+                groupManager.renderGroups();
+        }           
+        
     }
 
 
@@ -55,39 +68,7 @@ function UIManager() {
         });
     }
 
-function renderAllCars(cars) {
-        let carListElement = document.querySelector('#mainMenu4');
-        carListElement.innerHTML = '';
-        cars.forEach(function (car) {
-            let carElement = renderCar(car);
-            carListElement.appendChild(carElement);
-        });
-    }
 
-    function renderCar(car) {
-        let carElement = document.createElement('div');
-        carElement.classList.add('car');
-        carElement.setAttribute('data-car-id', car.id);
-        carElement.innerHTML = `
-            <div class="car-image">
-                <img src="${car.image}" alt="${car.name}">
-            </div>
-            <div class="car-name">
-                ${car.name}
-            </div>
-            <div class="car-driver">
-                
-                ${car.driver}
-            </div>
-            <div class="car-country">
-                ${car.country}
-            </div>
-            <div class="car-description">   
-                ${car.description}
-            </div>
-        `;
-        return carElement;
-    }
 
 
 

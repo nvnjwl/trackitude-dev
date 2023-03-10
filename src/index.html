@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/login.js"></script>
+    <script src="js/dataManager.js"></script>
+    <script src="js/mapManager.js"></script>
+    <script src="js/UIManager.js"></script>
+    <script src="js/appManager.js"></script>
+    <script src="js/carManager.js"></script>
+    <script src="js/reportManager.js"></script>
+    <script src="js/groupManager.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function myMap() {
+            console.log("myMap");
+            window.MAPS_READY = true;
+            //broadcast event
+            var event = new Event('mapsReady');
+            document.dispatchEvent(event);
+
+        }
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0_cbDFTzWwlfADPF6MSTrzfqYZw62yUk&callback=myMap"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="topPanel">
+            Welcome To Traking
+        </div>
+
+        <div id="bottomPanel">
+            <div id="leftPanel">
+                <div id="subMenu1" class="subMenu active" data-submenu-id="1" data-mainmenu-id="1"> All Reports</div>
+                <div id="subMenu2" class="subMenu" data-submenu-id="2" data-mainmenu-id="2"> Track My Car</div>
+                <div id="subMenu3" class="subMenu" data-submenu-id="3" data-mainmenu-id="3"> History</div>
+                <div id="subMenu4" class="subMenu" data-submenu-id="4" data-mainmenu-id="4"> List All Cars</div>
+                <div id="subMenu5" class="subMenu" data-submenu-id="5" data-mainmenu-id="5"> List All Groups</div>
+
+
+            </div>
+            <div id="rightPanel">
+                <div id="mainMenu1" class="mainMenu" data-mainmenu-id="1"> All Reports</div>
+                <div id="mainMenu2" class="mainMenu hidden" data-mainmenu-id="2"> Track My Car</div>
+                <div id="mainMenu3" class="mainMenu hidden" data-mainmenu-id="3"> History</div>
+                <div id="mainMenu4" class="mainMenu hidden" data-mainmenu-id="4"> List All Cars</div>
+                <div id="mainMenu5" class="mainMenu hidden" data-mainmenu-id="5"> List All Groups</div>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
