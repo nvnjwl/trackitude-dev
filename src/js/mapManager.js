@@ -1,20 +1,22 @@
 function MapManager() {
 
-
+    let map = null;
+    var markers_list = [];
     function renderThisMap(mapId, lat, lng, zoom = 9) {
         let center = new google.maps.LatLng(lat, lng);
         var mapProp = {
             center: center,
-            zoom: 9,
+            zoom: 10,
         };
-        var map = new google.maps.Map(document.getElementById(mapId), mapProp);
+        map = new google.maps.Map(document.getElementById(mapId), mapProp);
         var marker = new google.maps.Marker({
             position: center,
-            animation: google.maps.Animation.BOUNCE,
+            //animation: google.maps.Animation.BOUNCE,
             icon: 'images/car.png'
         });
 
         marker.setMap(map);
+        markers_list.push(marker);
     }
 
 
@@ -32,9 +34,6 @@ function MapManager() {
 
 
 
-
-
-
         var map = new google.maps.Map(document.getElementById(mapId), mapProp);
 
 
@@ -49,8 +48,6 @@ function MapManager() {
         });
 
         flightPath.setMap(map);
-
-
 
         var marker = new google.maps.Marker({
             position: center,
@@ -90,15 +87,42 @@ function MapManager() {
             lat += 0.001;
             marker.setMap(map);
         }
+    }
 
 
+    function hideAllMarkers() {
+        for (var i = 0; i < markers_list.length; i++) {
+            markers_list[i].setMap(null);
+        }
+    }
 
+
+    function showMultiCar(carArray) {
+        hideAllMarkers();
+        var mapProp = {
+            center: new google.maps.LatLng(carArray[0].lat, carArray[0].lng),
+            zoom: 9,
+        };
+        if (!map) {
+            map = new google.maps.Map(document.getElementById("mainMenu2"), mapProp);
+        }
+
+        for (let i = 0; i < carArray.length; i++) {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(carArray[i].lat, carArray[i].lng),
+                //animation: google.maps.Animation.BOUNCE,
+                icon: 'images/car.png'
+            });
+
+            marker.setMap(map);
+            markers_list.push(marker);
+        }
     }
 
     return {
         renderThisMap: renderThisMap,
-        renderHistory: renderHistory
-
+        renderHistory: renderHistory,
+        showMultiCar: showMultiCar
     }
 }
 

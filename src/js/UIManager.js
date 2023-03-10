@@ -5,8 +5,8 @@ function UIManager() {
 
     let carManager;
     let reportManager;
-    let groupManager ;
-    function initialize() {     
+    let groupManager;
+    function initialize() {
 
 
         allSubmenu = document.querySelectorAll('.subMenu');
@@ -18,15 +18,24 @@ function UIManager() {
         carManager = new CarManager();
         reportManager = new ReportManager();
         groupManager = new GroupManager();
-        carManager.renderAllCars(CAR_LIST);
+
+        
         if (MAPS_READY) {
-            let noida= {lat: 28.5355, lng: 77.3910};
+            let noida = { lat: 28.5355, lng: 77.3910 };
             mapManager.renderThisMap('mainMenu2', noida.lat, noida.lng);
         } else {
             document.addEventListener('mapsReady', function () {
                 mapManager.renderThisMap('mainMenu2', noida.lat, noida.lng);
             });
         }
+
+
+
+        let submenuId = 'subMenu1';
+        let subMenuDiv = document.querySelector(`#${submenuId}`);
+        
+        //click on submenu2
+        subMenuDiv.click();
     }
 
     function onSubmenuClick(event) {
@@ -42,38 +51,40 @@ function UIManager() {
         hideAllMainmenu();
         submenuToActivate && submenuToActivate.classList.add('active');
         mainmenuToActivate && mainmenuToActivate.classList.remove('hidden');
+
+        if (submenuId === "subMenu1") {
+            reportManager.renderReports();
+        }
+        if (submenuId === 'subMenu2') {
+            mapManager.renderHistory();
+        }
         if (submenuId === 'subMenu3') {
-               mapManager.renderHistory();
+            mapManager.renderHistory();
         }
-        if (submenuId ==="subMenu1") {
-                reportManager.renderReports();
+        if (submenuId === "subMenu4") {
+            carManager.renderAllCars(CAR_LIST);
         }
-        if (submenuId ==="subMenu5") {
-                groupManager.renderGroups();
-        }           
-        
+        if (submenuId === "subMenu5") {
+            groupManager.renderGroups();
+        }
     }
 
 
-
-    function hideAllMainmenu (){
+    function hideAllMainmenu() {
         allMainmenu.forEach(function (mainmenu) {
             mainmenu.classList.add('hidden');
         });
     }
 
-    function deactivateAllSubmenu()  {
+    function deactivateAllSubmenu() {
         allSubmenu.forEach(function (submenu) {
             submenu.classList.remove('active');
         });
     }
 
 
-
-
-
-
     return {
-        initialize: initialize
+        initialize: initialize,
+        onSubmenuClick: onSubmenuClick
     }
 }

@@ -21,7 +21,24 @@ function GroupManager() {
                     carId: 3,
                     carName: 'Innova :DL36AL-6791',
                     driver: 'Ravi Verma',
-                }]
+                },
+                {
+                    carId: 4,
+                    carName: 'Maruti :DL36AL-6792',
+                    driver: 'Sumit Arora',
+                }
+            ]
+
+        },
+        {
+            groupName: "Ghaziabad Site",
+            groupMembers: [
+                {
+                    carId: 5,
+                    carName: 'Swift Desire :UP36AL-6794',
+                    driver: 'Gaurav Sharma',
+                },
+            ]
 
         }
     ];
@@ -45,7 +62,7 @@ function GroupManager() {
                     ${this.groups.map(function (group) {
             return `
                         <tr>
-                            <td>${group.groupName}</td>
+                            <td class="groupName">${group.groupName}</td>
                             <td>${group.groupMembers.map(function (groupMember) {
                 return `
                                     <div class="groupMember">
@@ -61,6 +78,41 @@ function GroupManager() {
             </table>
         `;
         groupParent.appendChild(groupElement);
+        //click event for group
+        let groupMemberElements = document.querySelectorAll('.groupName');
+        groupMemberElements.forEach(function (groupMemberElement) {
+            
+            groupMemberElement.addEventListener('click', function (event) {
+               let  groupName = event.target.innerHTML; 
+                showGroupOnMap(groupName);
+            });
+        });
+    }
+
+
+
+    function showGroupOnMap(groupName) {
+        let groupData = groups.find(function (group) {
+            return group.groupName === groupName;
+        });
+        let carArray = [];
+        groupData.groupMembers.forEach(function (groupMember) {
+            let carData = CAR_LIST.find(function (car) {
+                return car.id === groupMember.carId;
+            });
+            carArray.push({
+                lat: carData.lat,
+                lng: carData.lng,
+            });
+        });
+        mapManager.showMultiCar(carArray);
+        
+        let submenuId = 'subMenu2';
+        let subMenuDiv = document.querySelector(`#${submenuId}`);
+        
+        //click on submenu2
+        subMenuDiv.click();
+        
     }
     return {
         renderGroups: renderGroups,
